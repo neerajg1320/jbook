@@ -8,6 +8,7 @@ interface PreviewProps {
 const iframeHTML = `
 <html>
     <head>
+    <style>html {background-color: white;}</style>
     </head>
     <body>
         <div id="root"></div>
