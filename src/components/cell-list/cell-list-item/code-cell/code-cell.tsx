@@ -1,36 +1,37 @@
 import 'bulmaswatch/superhero/bulmaswatch.min.css';
 
-import { useState } from 'react';
-
 import CodeEditor from './code-editor/code-editor';
 import Preview from './preview/preview';
-import bundler from '../../../../bundler';
+
 import Resizable from './resizable/resizable';
 import { useEffect } from 'react';
 import { Cell } from '../../../../state';
 import { useActions } from '../../../../hooks/use-actions';
+import { useTypedSelector } from '../../../../hooks/use-typed-selector';
 
 interface CodeCellProps {
     cell: Cell;
 };
 
 const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {    
-    const [code, setCode] = useState('');
-    const [err, setErr] = useState('');
-    const { updateCell } = useActions();
+    const { updateCell, createBundle } = useActions();
+    const bundle = useTypedSelector((state) => state.bundles[cell.id]); 
 
     useEffect(() => {
+        if (!bundle) {
+            createBundle(cell.id, cell.content);
+            return;
+        }
+
         const timer = setTimeout(async () => {
-            const output = await bundler(cell.content);     
-            // console.log(`output=${JSON.stringify(output, null, 2)}`);
-            setCode(output.code);
-            setErr(output.err);
-        }, 1000);
+            createBundle(cell.id, cell.content);
+        }, 750);
 
         return () => {
             clearTimeout(timer);
         }
-    }, [cell.content]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [cell.content, cell.id, createBundle]);
 
     return (
         <Resizable direction='vertical'>
@@ -41,7 +42,7 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
                         onChange={(value) => updateCell(cell.id, value)}
                     />
                 </Resizable>
-                <Preview code={code} err={err}/>
+                {bundle && <Preview code={bundle.code} err={bundle.err}/>}
             </div>
         </Resizable>
     );
