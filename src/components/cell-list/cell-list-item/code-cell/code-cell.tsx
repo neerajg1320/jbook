@@ -4,11 +4,11 @@ import { useState } from 'react';
 
 import CodeEditor from './code-editor/code-editor';
 import Preview from './preview/preview';
-import bundler from '../../bundler';
+import bundler from '../../../../bundler';
 import Resizable from './resizable/resizable';
 import { useEffect } from 'react';
-import { Cell } from '../../state';
-import { useActions } from '../../hooks/use-actions';
+import { Cell } from '../../../../state';
+import { useActions } from '../../../../hooks/use-actions';
 
 interface CodeCellProps {
     cell: Cell;
@@ -34,7 +34,7 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
 
     return (
         <Resizable direction='vertical'>
-            <div style={{height: '100%', display: 'flex', flexDirection: 'row'}}>
+            <div style={{height: 'calc(100% - 10px)', display: 'flex', flexDirection: 'row'}}>
                 <Resizable direction='horizontal'> 
                     <CodeEditor 
                         initialValue={cell.content}
