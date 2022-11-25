@@ -14,4 +14,8 @@ npm install --save-exact react-resizable@3.0.4 @types/react-resizable@3.0.2 --le
 
 # Mark down editor
 # @uiw/react-md-editor
-npm install --save-exact @uiw/react-md-editor@2.1.1
+npm install --save-exact @uiw/react-md-editor@2.1.1 --legacy-peer-deps
+
+npm install --save-exact react-redux redux @types/react-redux redux-thunk@2.3.0 --legacy-peer-deps
+
+npm install immer --legacy-peer-deps
