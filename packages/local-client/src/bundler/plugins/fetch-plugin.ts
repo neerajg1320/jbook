@@ -7,6 +7,8 @@ const fileCache = localForage.createInstance({
   });
 
 export const fetchPlugin = (inputCode: string) => {
+    const debug = false;
+
     return {
         name: 'fetch-plugin',
 
@@ -22,7 +24,9 @@ export const fetchPlugin = (inputCode: string) => {
                 // Return object from cache if available
                 const cachedResult = await fileCache.getItem<esbuild.OnLoadResult>(args.path);
                 if (cachedResult) {
-                    console.log(`Package ${args.path} found in Cache`);
+                    if (debug) {
+                        console.log(`Package ${args.path} found in Cache`);
+                    }
                     return cachedResult;
                 }
                 return null;
@@ -52,7 +56,9 @@ export const fetchPlugin = (inputCode: string) => {
                 };
         
                 await fileCache.setItem(args.path, result);
-                console.log(`Package ${args.path} saved to Cache`);
+                if (debug) {
+                    console.log(`Package ${args.path} saved to Cache`);
+                }
                 return result;
             });
 

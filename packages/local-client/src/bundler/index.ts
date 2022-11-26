@@ -12,7 +12,6 @@ const bundler = async (rawCode: string) => {
         });
     }
 
-    console.log(`bundler called:`);
     try {
         const result = await service.build({
             entryPoints: ['index.js'],
@@ -30,7 +29,6 @@ const bundler = async (rawCode: string) => {
             jsxFragment: '_React.Fragment'
         });
         
-        console.log(`compile success: code=${rawCode}`);
         return {
             code: result.outputFiles[0].text,
             err: ''
