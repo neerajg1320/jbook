@@ -28,4 +28,9 @@ npm install -g --exact lerna@3.22.1 --legacy-peer-deps
 # Lerna
 lerna add commander --scope=cli
 
+
+lerna add typescript --dev --scope=local-api
 npx tsc --init
+
+lerna add @types/node --dev --scope=cli
+
