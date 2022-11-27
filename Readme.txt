@@ -42,3 +42,7 @@ lerna add cors --scope=local-api
 lerna add @types/cors --dev --scope=local-api
 lerna add http-proxy-middleware --scope=local-api
 lerna add local-client --scope=local-api
+
+lerna add esbuild@0.8.26 --dev --scope=@glassball/cli
+
+lerna publish --no-push
