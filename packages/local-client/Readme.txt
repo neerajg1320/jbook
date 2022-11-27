@@ -22,4 +22,4 @@ npm install immer --legacy-peer-deps
 
 npm install @fortawesome/fontawesome-free@5.15.1 --legacy-peer-deps
 
-lerna add esbuild@0.8.26 --dev --scope=@glassball/cli
+

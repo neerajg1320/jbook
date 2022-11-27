@@ -1,0 +1,11 @@
+Stephen Grider:
+
+Make a change to the project and republish with Lerna. 
+Write cells in a format which is more user friendly than current JSON format. We can create a real Javascript file where text editor contents are added as comments and code editor contents are added as code.
+The code editor height is fixed. It might be better if we adjust it according to the code in it.
+The app is empty when a user first opens a new notebook. Try adding in some default notes.
+
+
+
+Neeraj Gupta:
+Allow multiple element rendering from code cell. Currently we are rendering only onto '#root'.

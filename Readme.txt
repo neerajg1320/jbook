@@ -46,3 +46,6 @@ lerna add local-client --scope=local-api
 lerna add esbuild@0.8.26 --dev --scope=@glassball/cli
 
 lerna publish --no-push
+
+npx -y @glassball/cli serve
+# The package is cached in ~/.npm/_npx
