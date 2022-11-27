@@ -1,0 +1,1 @@
+[{"content":"","type":"text","id":"s12"},{"content":"","type":"text","id":"5ag"},{"content":"document.querySelector('#root').innerHTML = \"ABCF\"","type":"code","id":"avh"}]

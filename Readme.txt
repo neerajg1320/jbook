@@ -25,12 +25,20 @@ npm install @fortawesome/fontawesome-free@5.15.1 --legacy-peer-deps
 
 npm install -g --exact lerna@3.22.1 --legacy-peer-deps
 
-# Lerna
-lerna add commander --scope=cli
-
-
+##
+# cli
 lerna add typescript --dev --scope=local-api
 npx tsc --init
-
+lerna add commander --scope=cli
 lerna add @types/node --dev --scope=cli
 
+##
+# local-api
+lerna add typescript --dev --scope=local-api
+npx tsc --init
+lerna add express --scope=local-api
+lerna add @types/express --dev --scope=local-api
+lerna add cors --scope=local-api
+lerna add @types/cors --dev --scope=local-api
+lerna add http-proxy-middleware --scope=local-api
+lerna add local-client --scope=local-api
